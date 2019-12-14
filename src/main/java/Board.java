@@ -5,10 +5,12 @@ public class Board {
 
     private HashMap<Integer, Integer> playerPositions;
     private int currentPlayer;
-    final int _maximumPointsInOneTurn = 12;
     private HashMap<Integer, Integer> hops;
+    private int _maxNumberOfSquares;
 
     public Board() {
+        _maxNumberOfSquares = 100;
+
         playerPositions = new HashMap<Integer, Integer>() {{
             put(1, 0);
             put(2, 0);
@@ -53,6 +55,9 @@ public class Board {
         final int newPosition = getNewPosition(die1, die2);
 
         playerPositions.replace(currentPlayer, newPosition);
+
+        if(newPosition == _maxNumberOfSquares)
+            return String.format("Player %s wins!", currentPlayer);
 
         final String message = String.format("Player %s is on square %s", currentPlayer, newPosition);
 
