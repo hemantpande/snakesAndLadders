@@ -7,4 +7,4 @@
 - The [kata](https://en.wikipedia.org/wiki/Kata_(programming)) has been solved purely using [TDD](https://martinfowler.com/bliki/TestDrivenDevelopment.html).
 - The best way to navigate through from the start is to look at each individual commit, incrementally, starting from the first.
 
-If you have any feedback, please feel free to reach out and contribute.
+For feedback, please feel free to reach out and contribute.
