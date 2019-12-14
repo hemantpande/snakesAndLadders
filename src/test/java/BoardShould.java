@@ -59,4 +59,18 @@ public class BoardShould {
 
         assertEquals("Player 1 is on square 38", board.play(1, 1));
     }
+
+    @Test
+    @DisplayName("Player 1 bounces back when roll is high, near the finish line")
+    void let_Player1_bounce_back_when_roll_is_too_high_near_the_finish_line() {
+        Board board = new Board();
+
+        assertAll(() -> assertEquals("Player 1 is on square 38", board.play(1, 1)),
+                () -> assertEquals("Player 1 is on square 48", board.play(6, 4)),
+                () -> assertEquals("Player 2 is on square 11", board.play(5, 6)),
+                () -> assertEquals("Player 1 is on square 67", board.play(1, 2)),
+                () -> assertEquals("Player 2 is on square 14", board.play(1, 2)),
+                () -> assertEquals("Player 1 is on square 91", board.play(2, 2)),
+                () -> assertEquals("Player 1 is on square 98", board.play(6, 5)));
+    }
 }

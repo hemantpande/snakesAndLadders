@@ -64,7 +64,10 @@ public class Board {
     private int getNewPosition(int dice1, int dice2) {
         final Integer currentPosition = playerPositions.get(currentPlayer);
 
-        final int newPosition = currentPosition + dice1 + dice2;
+        int newPosition = currentPosition + dice1 + dice2;
+
+        if(newPosition > 100)
+            newPosition = 100 - (newPosition - 100);
 
         if(hops.get(newPosition) != null)
             return hops.get(newPosition);
