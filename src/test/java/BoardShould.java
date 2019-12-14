@@ -42,4 +42,14 @@ public class BoardShould {
         assertAll(() -> assertEquals("Player 1 is on square 12", board.play(6, 6)),
                 () -> assertEquals("Player 1 is on square 24", board.play(6, 6)));
     }
+
+    @Test
+    @DisplayName("Player 2 should play again when both dice are maximum")
+    void let_Player2_Play_Again_When_Maximum_Is_Scored() {
+        Board board = new Board();
+
+        assertAll(() -> assertEquals("Player 1 is on square 11", board.play(5, 6)),
+                () -> assertEquals("Player 2 is on square 12", board.play(6, 6)),
+                () -> assertEquals("Player 2 is on square 24", board.play(6, 6)));
+    }
 }
