@@ -1,5 +1,4 @@
 import java.util.HashMap;
-import java.util.Map;
 
 public class Board {
 
@@ -52,11 +51,14 @@ public class Board {
 
     public String play(int die1, int die2) {
 
+        if (gameOver())
+            return "Game over!";
+
         final int newPosition = getNewPosition(die1, die2);
 
-        playerPositions.replace(currentPlayer, newPosition);
+        updateCurrentPlayerPosition(newPosition);
 
-        if(newPosition == _maxNumberOfSquares)
+        if(hasCurrentPlayerWon(newPosition))
             return String.format("Player %s wins!", currentPlayer);
 
         final String message = String.format("Player %s is on square %s", currentPlayer, newPosition);
@@ -64,6 +66,24 @@ public class Board {
         decideNextPlayer(die1 , die2);
 
         return message;
+    }
+
+    private boolean hasCurrentPlayerWon(int newPosition) {
+        return newPosition == _maxNumberOfSquares;
+    }
+
+    private void updateCurrentPlayerPosition(int newPosition) {
+        playerPositions.replace(currentPlayer, newPosition);
+    }
+
+    private boolean gameOver() {
+        final boolean player1HasAlreadyWon = playerPositions.get(1) == _maxNumberOfSquares;
+        final boolean player2HasAlreadyWon = playerPositions.get(2) == _maxNumberOfSquares;
+
+        if(player1HasAlreadyWon || player2HasAlreadyWon)
+            return true;
+
+        return false;
     }
 
     private int getNewPosition(int dice1, int dice2) {
@@ -83,7 +103,12 @@ public class Board {
     private void decideNextPlayer(int die1, int die2) {
         if(die1 == die2)
             return;
-        else
-            currentPlayer = currentPlayer == 1 ? 2 : 1;
+        else {
+            toggleCurrentPlayer();
+        }
+    }
+
+    private void toggleCurrentPlayer() {
+        currentPlayer = currentPlayer == 1 ? 2 : 1;
     }
 }

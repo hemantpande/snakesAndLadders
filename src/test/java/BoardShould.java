@@ -89,7 +89,7 @@ public class BoardShould {
     }
 
     @Test
-    @DisplayName("Player 1 wins when exact number of required dice is scored")
+    @DisplayName("Player 1 wins")
     void let_Player1_win_when_exact_number_of_dice_is_scored() {
         Board board = new Board();
 
@@ -100,5 +100,20 @@ public class BoardShould {
                 () -> assertEquals("Player 2 is on square 14", board.play(1, 2)),
                 () -> assertEquals("Player 1 is on square 91", board.play(2, 2)),
                 () -> assertEquals("Player 1 wins!", board.play(6, 3)));
+    }
+
+    @Test
+    @DisplayName("Game over")
+    void not_allow_Player2_to_play_when_player1_has_already_won() {
+        Board board = new Board();
+
+        assertAll(() -> assertEquals("Player 1 is on square 38", board.play(1, 1)),
+                () -> assertEquals("Player 1 is on square 48", board.play(6, 4)),
+                () -> assertEquals("Player 2 is on square 11", board.play(5, 6)),
+                () -> assertEquals("Player 1 is on square 67", board.play(1, 2)),
+                () -> assertEquals("Player 2 is on square 14", board.play(1, 2)),
+                () -> assertEquals("Player 1 is on square 91", board.play(2, 2)),
+                () -> assertEquals("Player 1 wins!", board.play(6, 3)),
+                () -> assertEquals("Game over!", board.play(1, 2)));
     }
 }
