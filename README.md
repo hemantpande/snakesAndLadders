@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/hemantpande/snakesAndLadders.png?branch=master)](https://travis-ci.com/hemantpande/snakesAndLadders)
-
+[![codecov](https://codecov.io/gh/hemantpande/snakesAndLadders/branch/master/graph/badge.svg)](https://codecov.io/gh/hemantpande/snakesAndLadders)
+[![HitCount](http://hits.dwyl.io/hemantpande/snakesAndLadders.svg)](http://hits.dwyl.io/hemantpande/snakesAndLadders)
 # Snakes and Ladders
 
 - Problem statement and rules can be found [here](https://www.codewars.com/kata/snakes-and-ladders-1)
