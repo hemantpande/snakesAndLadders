@@ -48,14 +48,15 @@ public class Board {
         return playerPositions.get(player);
     }
 
-    public String play(int dice1, int dice2) {
-        final int newPosition = getNewPosition(dice1, dice2);
+    public String play(int die1, int die2) {
+
+        final int newPosition = getNewPosition(die1, die2);
 
         playerPositions.replace(currentPlayer, newPosition);
 
         final String message = String.format("Player %s is on square %s", currentPlayer, newPosition);
 
-        decideNextPlayer(dice1 + dice2);
+        decideNextPlayer(die1 , die2);
 
         return message;
     }
@@ -71,8 +72,8 @@ public class Board {
         return newPosition;
     }
 
-    private void decideNextPlayer(int totalPoints) {
-        if(totalPoints == _maximumPointsInOneTurn)
+    private void decideNextPlayer(int die1, int die2) {
+        if(die1 == die2)
             return;
         else
             currentPlayer = currentPlayer == 1 ? 2 : 1;
