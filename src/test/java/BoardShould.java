@@ -26,7 +26,7 @@ public class BoardShould {
 
     @Test
     @DisplayName("Player 2 should play after player 1 when both dice are not maximum")
-    void let_Player2_Play_When_Both_Dice_Are_Not_Maximum() {
+    void let_Player2_Play_When_Player1_does_not_score_Maximum() {
         Board board = new Board();
 
         assertAll(() -> assertEquals("Player 1 is on square 3", board.play(1, 2)),
@@ -51,5 +51,13 @@ public class BoardShould {
         assertAll(() -> assertEquals("Player 1 is on square 11", board.play(5, 6)),
                 () -> assertEquals("Player 2 is on square 12", board.play(6, 6)),
                 () -> assertEquals("Player 2 is on square 24", board.play(6, 6)));
+    }
+
+    @Test
+    @DisplayName("Player 1 should take the ladder when encountered")
+    void let_Player1_take_the_ladder_when_encountered() {
+        Board board = new Board();
+
+        assertEquals("Player 1 is on square 38", board.play(1, 1));
     }
 }
