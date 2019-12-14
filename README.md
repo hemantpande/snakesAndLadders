@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/hemantpande/snakesAndLadders.png?branch=master)](https://travis-ci.com/hemantpande/snakesAndLadders)
+
 # Snakes and Ladders
 
 - Problem statement and rules can be found [here](https://www.codewars.com/kata/snakes-and-ladders-1)
